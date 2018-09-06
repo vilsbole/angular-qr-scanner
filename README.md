@@ -50,5 +50,3 @@ App.controller('qrCrtl', ['$scope', function($scope) {
 
 ### License
 The MIT License
-
-Copyright (c) 2013-2015 Sembrestels
