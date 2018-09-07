@@ -1909,10 +1909,6 @@ json5@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
 
-jsqrcode@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/jsqrcode/-/jsqrcode-0.0.6.tgz#e195c8a9a0dc11f8821ba559a8f53e2c9b76ede6"
-
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"

@@ -1,7 +1,7 @@
 {
   "name": "@bity/angular-qr-scanner",
   "license": "MIT",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "icon": "",
   "author": "@vilsbole",
   "contributors": [],
@@ -28,8 +28,7 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "angular": "",
-    "jsqrcode": "0.0.6"
+    "angular": ""
   },
   "bugs": {
     "url": "https://github.com/vilsbole/angular-qr-scanner/issues"

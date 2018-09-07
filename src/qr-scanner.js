@@ -3,6 +3,8 @@ if (require){
   if (!qrcode) var qrcode = require('jsqrcode');
 }
 
+require('./jsqrcode-combined.min')
+
 (function() {
 'use strict';
 
