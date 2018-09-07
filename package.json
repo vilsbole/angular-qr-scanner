@@ -1,18 +1,31 @@
 {
   "name": "@bity/angular-qr-scanner",
   "author": "@vilsbole",
+  "contributors": [],
+  "icon": "",
   "license": "MIT",
   "description": "angular-qr-scanner",
-  "keywords": [],
+  "keywords": [
+    "angular",
+    "qr-code",
+    "qr-scanner",
+    "qrscanner"
+  ],
   "version": "0.1.0",
-  "main": "qr-scanner.js",
+  "main": "./dist/angular-qr-scanner.min.js",
   "scripts": {
-    "test": "yarn test"
+    "test": "",
+    "build": "webpack --mode production"
   },
   "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-uglify": "~0.9.1",
-    "grunt-contrib-watch": "~0.6.1"
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "noop-loader": "^1.0.0",
+    "null-loader": "^0.1.1",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
   },
   "dependencies": {
     "angular": "",
