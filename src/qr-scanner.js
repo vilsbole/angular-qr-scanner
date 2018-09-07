@@ -1,9 +1,5 @@
-if (require){
-  if (!angular) var angular = require('angular');
-  if (!qrcode) var qrcode = require('jsqrcode');
-}
 
-require('./jsqrcode-combined.min')
+require('./jsqrcode-combined.min');
 
 (function() {
 'use strict';
@@ -51,8 +47,10 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
       var successCallback = function(stream) {
         video.srcObject = stream;
         scope.video = video;
-        video.play();
-        stopScan = $interval(scan, 500);
+        video.play()
+          .then(() => {
+            stopScan = $interval(scan, 500);
+          });
       }
 
       if (navigator.getUserMedia) {
@@ -67,8 +65,8 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
       };
 
       element.bind('$destroy', function() {
-        if ($window.localMediaStream) {
-          $window.localMediaStream.getVideoTracks()[0].stop();
+        if (video.srcObject) {
+          video.srcObject.getTracks().forEach(track => track.stop());
         }
         if (stopScan) {
           $interval.cancel(stopScan);

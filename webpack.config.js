@@ -24,8 +24,7 @@ module.exports = {
   ],
   externals: [
     'canvas',
-    'angular',
-    'jsqrcode'
+    'angular'
   ],
   devtool: 'source-map',
 };
