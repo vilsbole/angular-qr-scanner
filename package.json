@@ -1,9 +1,11 @@
 {
   "name": "@bity/angular-qr-scanner",
+  "license": "MIT",
+  "version": "0.2.0",
+  "icon": "",
   "author": "@vilsbole",
   "contributors": [],
-  "icon": "",
-  "license": "MIT",
+  "main": "./dist/angular-qr-scanner.min.js",
   "description": "angular-qr-scanner",
   "keywords": [
     "angular",
@@ -11,8 +13,6 @@
     "qr-scanner",
     "qrscanner"
   ],
-  "version": "0.1.0",
-  "main": "./dist/angular-qr-scanner.min.js",
   "scripts": {
     "test": "",
     "build": "webpack --mode production"
