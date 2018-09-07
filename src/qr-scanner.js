@@ -53,7 +53,7 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
           });
       }
 
-      if (navigator.getUserMedia) {
+      if (navigator.mediaDevices) {
         navigator.mediaDevices.getUserMedia({video: { facingMode: {front: "environment"} }})
           .then(successCallback)
       } else {
