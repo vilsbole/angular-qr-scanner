@@ -15,13 +15,11 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
       ngVideoError: '&ngVideoError'
     },
     link: function(scope, element, attrs) {
-    
       window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-    
+
       var height = attrs.height || 300;
       var width = attrs.width || 250;
-    
+
       var video = $window.document.createElement('video');
       video.setAttribute('width', width);
       video.setAttribute('height', height);
@@ -30,15 +28,15 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
       canvas.setAttribute('id', 'qr-canvas');
       canvas.setAttribute('width', width);
       canvas.setAttribute('height', height);
-      canvas.setAttribute('style', 'display:none;'); 
-    
+      canvas.setAttribute('style', 'display:none;');
+
       angular.element(element).append(video);
       angular.element(element).append(canvas);
-      var context = canvas.getContext('2d'); 
+      var context = canvas.getContext('2d');
       var stopScan;
-    
+
       var scan = function() {
-        if ($window.localMediaStream) {
+        if (video.srcObject) {
           context.drawImage(video, 0, 0, 307,250);
           try {
             qrcode.decode();
@@ -49,19 +47,15 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
       }
 
       var successCallback = function(stream) {
-        video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
-        $window.localMediaStream = stream;
-
+        video.srcObject = stream;
         scope.video = video;
         video.play();
         stopScan = $interval(scan, 500);
       }
 
-      // Call the getUserMedia method with our callback functions
       if (navigator.getUserMedia) {
-        navigator.getUserMedia({video: true}, successCallback, function(e) {
-          scope.ngVideoError({error: e});
-        });
+        navigator.mediaDevices.getUserMedia({video: { facingMode: {front: "environment"} }})
+          .then(successCallback)
       } else {
         scope.ngVideoError({error: 'Native web camera streaming (getUserMedia) not supported in this browser.'});
       }
@@ -72,7 +66,7 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
 
       element.bind('$destroy', function() {
         if ($window.localMediaStream) {
-          $window.localMediaStream.stop();
+          $window.localMediaStream.getVideoTracks()[0].stop();
         }
         if (stopScan) {
           $interval.cancel(stopScan);
